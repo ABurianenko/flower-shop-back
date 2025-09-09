@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const addressSchema = new Schema(
     {
@@ -42,3 +42,5 @@ const shopsSchema = new Schema(
         versionKey: false,
     },
 );
+
+export const ShopsCollection = model('shops', shopsSchema);

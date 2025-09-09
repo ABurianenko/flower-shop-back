@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const flowersSchema = new Schema(
     {
@@ -57,4 +57,6 @@ const flowersSchema = new Schema(
         timestamps: true,
         versionKey: false,
     }
-)
+);
+
+export const FlowersCollections = model('flowers', flowersSchema);
