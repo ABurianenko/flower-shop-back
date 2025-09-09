@@ -5,6 +5,10 @@ import {useExpressServer} from "routing-controllers";
 import { IService } from "types/services";
 import { controllers } from "app/domain";
 import { middlewares } from "app/middlewares";
+import { pinoHttp } from "pino-http";
+import { getEnvVar } from "utils/getEnvVar";
+
+const PORT = Number(getEnvVar('PORT')) || 4000;
 
 export class Tcp implements IService {
     private static instance: Tcp;
@@ -24,6 +28,13 @@ export class Tcp implements IService {
         const { server, routePrefix } = this;
 
         server.use(express.json());
+        server.use(
+            pinoHttp({
+                transport: {
+                    target: 'pino-pretty'
+                }
+            })
+        )
 
         useExpressServer(server, {
             routePrefix,
@@ -34,8 +45,14 @@ export class Tcp implements IService {
             validation: false,
         });
 
+        server.use((_req, res) => {
+            res.status(404).json({
+                message: 'Not found',
+            });
+        });
+
         return new Promise<boolean>((resolve) => {
-            server.listen(4000, () => {
+            server.listen(PORT, () => {
                 console.log("Tcp service started on port 4000");
                 return resolve(true);
             })
