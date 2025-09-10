@@ -1,9 +1,9 @@
-import { HttpError as RcHttpError} from "routing-controllers";
+import { HttpError } from "http-errors"
 
 export const errorHandler = (err, req, res, next) => {
-    if (err instanceof RcHttpError) {
-        res.status(err.httpCode).json({
-            status: err.httpCode,
+    if (err instanceof HttpError) {
+        res.status(err.status).json({
+            status: err.status,
             message: err.name,
             data: err,
         });

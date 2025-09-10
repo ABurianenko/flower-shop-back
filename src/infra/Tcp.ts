@@ -9,6 +9,7 @@ import { pinoHttp } from "pino-http";
 import { getEnvVar } from "utils/getEnvVar";
 import shopsRouter from '../routers/shops'
 import flowersRouter from '../routers/flowers'
+import ordersRouter from '../routers/orders'
 import { notFoundHandler } from "app/middlewares/notFoundHandler";
 import { errorHandler } from "app/middlewares/errorHandler";
 
@@ -52,6 +53,8 @@ export class Tcp implements IService {
         server.use(shopsRouter);
 
         server.use(flowersRouter);
+
+        server.use(ordersRouter);
 
         server.use(notFoundHandler);
 

@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import createHttpError from "http-errors";
 import { getFlowerById, getFlowersByShop } from "services/flowers";
 
@@ -6,6 +7,8 @@ export const getFlowersByShopController = async (req, res, next) => {
     const flowers = await getFlowersByShop(shopId);
 
     res.status(200).json({
+        status: 200,
+        message: 'Flowers retrieved successfully',
         data: flowers,
     });
 }
@@ -19,6 +22,8 @@ export const getFlowerByIdController = async (req, res, next) => {
     };
 
     res.status(200).json({
+        status: 200,
+        message: `Flower #${flowerId} found`,
         data: flower,
     })
 }

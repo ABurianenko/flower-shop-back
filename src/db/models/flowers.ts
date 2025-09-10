@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import { ref } from "process";
 
 const flowersSchema = new Schema(
     {
@@ -8,6 +9,7 @@ const flowersSchema = new Schema(
         },
         shopId: {
             type: Schema.Types.ObjectId,
+            ref: 'shops',
             required: true,
         },
         type: {
