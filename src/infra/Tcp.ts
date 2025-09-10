@@ -9,6 +9,8 @@ import { pinoHttp } from "pino-http";
 import { getEnvVar } from "utils/getEnvVar";
 import shopsRouter from '../routers/shops'
 import flowersRouter from '../routers/flowers'
+import { notFoundHandler } from "app/middlewares/notFoundHandler";
+import { errorHandler } from "app/middlewares/errorHandler";
 
 const PORT = Number(getEnvVar('PORT')) || 4000;
 
@@ -51,18 +53,9 @@ export class Tcp implements IService {
 
         server.use(flowersRouter);
 
-        server.use((_req, res) => {
-            res.status(404).json({
-                message: 'Not found',
-            });
-        });
+        server.use(notFoundHandler);
 
-        server.use((err, req, res, next) => {
-            res.status(500).json({
-            message: 'Something went wrong',
-            error: err.message,
-            });
-        });
+        server.use(errorHandler);
 
         return new Promise<boolean>((resolve) => {
             server.listen(PORT, () => {

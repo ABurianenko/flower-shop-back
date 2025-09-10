@@ -1,3 +1,4 @@
+import createHttpError from "http-errors";
 import { getAllShops, getShopById } from "services/shops";
 
 export const getAllShopsController = async (req, res) => {
@@ -12,9 +13,7 @@ export const getAllShopsController = async (req, res) => {
     const shop = await getShopById(shopId);
 
     if (!shop) {
-        res.status(404).json({
-            message: 'Shop not found'
-        });
+        throw createHttpError(404, 'Shop not found');
         return;
     }
 

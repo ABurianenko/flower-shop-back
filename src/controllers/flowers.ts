@@ -1,3 +1,4 @@
+import createHttpError from "http-errors";
 import { getFlowerById, getFlowersByShop } from "services/flowers";
 
 export const getFlowersByShopController = async (req, res, next) => {
@@ -14,10 +15,7 @@ export const getFlowerByIdController = async (req, res, next) => {
     const flower = await getFlowerById(flowerId);
 
     if (!flower) {
-        res.status(404).json({
-            message: 'Flower not found',
-        });
-        return;
+        throw createHttpError(404, 'Flower not found');
     };
 
     res.status(200).json({
