@@ -1,5 +1,4 @@
 import { model, Schema } from "mongoose";
-import { ref } from "process";
 
 const flowersSchema = new Schema(
     {
@@ -28,7 +27,6 @@ const flowersSchema = new Schema(
         },
         currency: {
             type: String,
-            required: true,
             default: 'EUR'
         },
         image_url: {
@@ -36,11 +34,11 @@ const flowersSchema = new Schema(
             required: true,
             alias: 'imageUrl',
         },
-        favorite: {
+        isFavorite: {
             type: Boolean,
             default: false,
         },
-        available: {
+        isAvailable: {
             type: Boolean,
             default: true
         },
