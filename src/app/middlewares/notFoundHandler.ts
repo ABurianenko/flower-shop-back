@@ -1,4 +1,4 @@
-export const notFoundHandler = (err, req, res, next) => {
+export const notFoundHandler = (_req, res) => {
     res.status(404).json({
         message: 'Not found',
     });

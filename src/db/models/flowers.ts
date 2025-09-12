@@ -34,11 +34,11 @@ const flowersSchema = new Schema(
             required: true,
             alias: 'imageUrl',
         },
-        isFavorite: {
+        favorite: {
             type: Boolean,
             default: false,
         },
-        isAvailable: {
+        available: {
             type: Boolean,
             default: true
         },

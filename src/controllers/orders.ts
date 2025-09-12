@@ -1,4 +1,3 @@
-import { stat } from "fs";
 import createHttpError from "http-errors";
 import { createOrder, getAllOrders, getOrderById } from "services/orders";
 

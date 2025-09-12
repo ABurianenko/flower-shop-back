@@ -1,6 +1,4 @@
-import { create } from "domain";
 import { model, Schema } from "mongoose";
-import { ref } from "process";
 
 const customerSchema = new Schema(
     {
@@ -77,12 +75,23 @@ const itemSchema = new Schema(
     { _id: false }
 );
 
+function generateOrderNumber() {
+    const d = new Date();
+    const y = String(d.getUTCFullYear()).slice(2);
+    const m = String(d.getUTCMonth() + 1).padStart(2, "0");
+    const day = String(d.getUTCDate()).padStart(2, "0");
+    const rnd = Math.random().toString(36).slice(2, 6).toUpperCase();
+    return `ORD-${y}${m}${day}-${rnd}`;
+}
+
 const orderSchema = new Schema(
     {
         orderNumber: {
             type: String,
             required: true,
             unique: true,
+            index: true,
+            default: () => generateOrderNumber()
         },
         shopId: {
             type: Schema.Types.ObjectId,
@@ -129,18 +138,6 @@ const orderSchema = new Schema(
         versionKey: false
     }
 )
-
-orderSchema.pre('save', function (next) {
-    if (!this.orderNumber) {
-        const d = new Date();
-        const y = String(d.getUTCFullYear()).slice(2);
-        const m = String(d.getUTCMonth() + 1).padStart(2, "0");
-        const day = String(d.getUTCDate()).padStart(2, "0");
-        const rnd = Math.random().toString(36).slice(2, 6).toUpperCase();
-        this.orderNumber = `ORD-${y}${m}${day}-${rnd}`;
-    }
-    next();
-});
 
 orderSchema.index({ createdAt: 1 });
 
