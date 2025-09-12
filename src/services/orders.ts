@@ -18,7 +18,6 @@ export const createOrder = async (payload) => {
     const { shopId, customer, deliveryAddress, items, type, address }
         = payload;
 
-
     if (!shopId || !type || !customer || !items) {
         throw createHttpError(400, 'Missing required fields');
     };
@@ -90,7 +89,6 @@ export const createOrder = async (payload) => {
         preparedOrderData.deliveryAddress = shopAddress;
     }
 
-
     if (flowers.length !== flowerIds.length) {
         throw createHttpError(400, 'One or more flowers are not found in the specified shop');
     };
@@ -103,6 +101,7 @@ export const createOrder = async (payload) => {
     }));
 
     const bulkResult = await FlowersCollections.bulkWrite(decrementStockOperations, { ordered: true });
+
     bulkResult.modifiedCount, 'expected:', orderItems.length);
     const modifiedCount = bulkResult.modifiedCount;
     const expectedCount = orderItems.length;
