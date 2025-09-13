@@ -1,10 +1,20 @@
-import { stat } from "fs";
 import createHttpError from "http-errors";
+import { parse } from "path";
 import { getFlowerById, getFlowersByShop } from "services/flowers";
+import { parsePaginationParams } from "utils/parsePaginationParams";
+import { parseSortParams } from "utils/ParseSortParams";
 
 export const getFlowersByShopController = async (req, res, next) => {
     const { shopId } = req.params;
-    const flowers = await getFlowersByShop(shopId);
+    const { page, perPage } = parsePaginationParams(req.query);
+    const { sortBy, sortOrder } = parseSortParams(req.query);
+    const flowers = await getFlowersByShop({
+        shopId,
+        page,
+        perPage,
+        sortBy,
+        sortOrder,
+    });
 
     res.status(200).json({
         status: 200,

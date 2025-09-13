@@ -102,7 +102,7 @@ export const createOrder = async (payload) => {
 
     const bulkResult = await FlowersCollections.bulkWrite(decrementStockOperations, { ordered: true });
 
-    bulkResult.modifiedCount, 'expected:', orderItems.length);
+    bulkResult.modifiedCount, 'expected:', orderItems.length;
     const modifiedCount = bulkResult.modifiedCount;
     const expectedCount = orderItems.length;
 
