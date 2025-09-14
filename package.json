@@ -6,6 +6,7 @@
     "start": "node -r dotenv/config -r tsconfig-paths/register ./dist/main.js",
     "dev": "nodemon",
     "build": "tsc -p tsconfig.json",
+    "postbuild": "echo '--- DIST CONTENT ---' && ls -la dist && echo '--- JS FILES ---' && find dist -maxdepth 2 -type f -name '*.js' -print",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
