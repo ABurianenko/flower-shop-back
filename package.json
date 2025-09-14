@@ -1,9 +1,9 @@
 {
   "name": "flower-shop-back",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "start": "node -r dotenv/config tsconfig-paths/register ./dist/main.js",
+    "start": "node -r dotenv/config -r tsconfig-paths/register ./dist/main.js",
     "dev": "nodemon",
     "build": "tsc -p tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -37,5 +37,8 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.42.0"
+  },
+  "overrides": {
+    "strip-ansi": "7.1.2"
   }
 }
