@@ -1,8 +1,7 @@
 import createHttpError from "http-errors";
-import { parse } from "path";
-import { getFlowerById, getFlowersByShop } from "services/flowers";
-import { parsePaginationParams } from "utils/parsePaginationParams";
-import { parseSortParams } from "utils/ParseSortParams";
+import { getFlowerById, getFlowersByShop } from "../services/flowers";
+import { parsePaginationParams } from "../utils/parsePaginationParams";
+import { parseSortParams } from "../utils/ParseSortParams";
 
 export const getFlowersByShopController = async (req, res, next) => {
     const { shopId } = req.params;

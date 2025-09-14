@@ -1,4 +1,4 @@
-import { ShopsCollection } from "db/models/shops"
+import { ShopsCollection } from "../db/models/shops"
 
 export const getAllShops = async () => {
     const shops = await ShopsCollection.find();

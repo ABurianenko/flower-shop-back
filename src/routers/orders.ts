@@ -1,6 +1,6 @@
-import { createOrderController, getAllOrdersController, getOrderByIdController } from "controllers/orders";
+import { createOrderController, getAllOrdersController, getOrderByIdController } from "../controllers/orders";
 import { Router } from "express";
-import { ctrlWrapper } from "utils/ctrlWrapper";
+import { ctrlWrapper } from "../utils/ctrlWrapper";
 
 const router = Router();
 

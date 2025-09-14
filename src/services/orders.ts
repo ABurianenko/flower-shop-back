@@ -1,6 +1,6 @@
-import { FlowersCollections } from "db/models/flowers";
-import { OrdersCollection } from "db/models/orders";
-import { ShopsCollection } from "db/models/shops";
+import { FlowersCollections } from "../db/models/flowers";
+import { OrdersCollection } from "../db/models/orders";
+import { ShopsCollection } from "../db/models/shops";
 import createHttpError from "http-errors";
 import { Types } from "mongoose";
 

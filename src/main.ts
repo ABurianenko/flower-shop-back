@@ -1,5 +1,5 @@
-import { initMongoDB } from "db/initMongoDB";
-import { App } from "infra/App";
+import { initMongoDB } from "./db/initMongoDB";
+import { App } from "./infra/App";
 
 const app = new App();
 

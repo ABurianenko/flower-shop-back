@@ -2,16 +2,16 @@ import "reflect-metadata";
 import express from "express";
 import {useExpressServer} from "routing-controllers";
 
-import { IService } from "types/services";
-import { controllers } from "app/domain";
-import { middlewares } from "app/middlewares";
+import { IService } from "../types/services";
+import { controllers } from "../app/domain";
+import { middlewares } from "../app/middlewares";
 import { pinoHttp } from "pino-http";
-import { getEnvVar } from "utils/getEnvVar";
+import { getEnvVar } from "../utils/getEnvVar";
 import shopsRouter from '../routers/shops'
 import flowersRouter from '../routers/flowers'
 import ordersRouter from '../routers/orders'
-import { notFoundHandler } from "app/middlewares/notFoundHandler";
-import { errorHandler } from "app/middlewares/errorHandler";
+import { notFoundHandler } from "../app/middlewares/notFoundHandler";
+import { errorHandler } from "../app/middlewares/errorHandler";
 
 const PORT = Number(getEnvVar('PORT')) || 4000;
 

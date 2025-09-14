@@ -1,6 +1,5 @@
-import { getAllShopsController, getShopByIdController } from "controllers/shops";
+import { getAllShopsController, getShopByIdController } from "../controllers/shops";
 import { Router } from "express";
-import { getAllShops, getShopById } from "services/shops";
 
 const router = Router();
 

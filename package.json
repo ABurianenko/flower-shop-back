@@ -1,9 +1,9 @@
 {
-  "name": "flower-shop-back",
+    "name": "flower-shop-back",
   "version": "1.0.0",
   "main": "dist/main.js",
   "scripts": {
-    "start": "node -r dotenv/config -r tsconfig-paths/register ./dist/main.js",
+    "start": "node -r dotenv/config ./dist/main.js",
     "dev": "nodemon",
     "build": "tsc -p tsconfig.json",
     "postbuild": "echo '--- DIST CONTENT ---' && ls -la dist && echo '--- JS FILES ---' && find dist -maxdepth 2 -type f -name '*.js' -print",

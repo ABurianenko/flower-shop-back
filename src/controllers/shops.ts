@@ -1,6 +1,5 @@
-import { stat } from "fs";
 import createHttpError from "http-errors";
-import { getAllShops, getShopById } from "services/shops";
+import { getAllShops, getShopById } from "../services/shops";
 
 export const getAllShopsController = async (req, res) => {
     const shops = await getAllShops();

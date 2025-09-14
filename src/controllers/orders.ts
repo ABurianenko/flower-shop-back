@@ -1,5 +1,5 @@
 import createHttpError from "http-errors";
-import { createOrder, getAllOrders, getOrderById } from "services/orders";
+import { createOrder, getAllOrders, getOrderById } from "../services/orders";
 
 export const getAllOrdersController = async (req, res, next) => {
     const orders = await getAllOrders();

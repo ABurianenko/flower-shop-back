@@ -1,4 +1,4 @@
-import { IService } from "types/services";
+import { IService } from "../types/services";
 import { Tcp } from "./Tcp";
 
 export class App implements IService {
@@ -19,7 +19,7 @@ export class App implements IService {
         console.log("App started");
 
         await tcp.init();
-        
+
         return true;
     }
 }
